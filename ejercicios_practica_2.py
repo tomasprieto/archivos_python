@@ -21,6 +21,24 @@ def ej3():
     # a lo largo de todo el archivo, 
     # sumando el stock en cada fila del archivo
 
+    stock = open('stock.csv')
+    lista = []
+    lista_2 = []
+    data = list(csv.DictReader(stock))
+    
+
+    for i in data:
+        lista.append(i['tornillos'])
+    
+    for num in lista:         
+        num = int(num) 
+        lista_2.append(num)
+        
+    
+    total = sum(lista_2)
+    print('total en la columna "tornillos":', total)
+    stock.close()
+
     # Para eso debe leer los datos del archivo
     # con "csv.DictReader", y luego recorrer los datos
     # dentro de un bucle y solo acceder a la columna "tornillos"
@@ -47,6 +65,28 @@ def ej4():
     # utilizando "try except", tema que se verá la clase que viene.
 
     # Comenzar aquí, recuerde el identado dentro de esta funcion
+
+    propiedades = open('propiedades.csv')
+    
+    data = list(csv.DictReader(propiedades))
+
+    lista = []
+
+    for i in data:
+        try:
+            lista.append(i['ambientes'])
+        except:
+            continue
+
+    cantidad_2_amb = lista.count('2')
+    cantidad_3_amb = lista.count('3')
+
+    print('Cantidad de 2 ambientes:', cantidad_2_amb)
+    print('Cantidad de 3 ambientes:', cantidad_3_amb)
+
+    propiedades.close()
+
+
 
 
 if __name__ == '__main__':
